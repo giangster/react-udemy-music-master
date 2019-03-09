@@ -9,7 +9,15 @@ const Artist = (props) => {
             <h3>{name}</h3>
             <p>{followers.total} followers</p>
             <p>{genres.join(', ')}</p>
-            <img src={images[0].url} alt={name} />
+            <img
+                src={images[0] && images[0].url}
+                alt={name}
+                style={{
+                    width: 200,
+                    height: 200,
+                    borderRadius: 100,
+                    objectFit: 'cover'
+                }} />
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Artist from "./Artist";
-
+import Tracks from "./Tracks";
 
 class App extends Component {
   constructor(props) {
@@ -29,7 +29,6 @@ class App extends Component {
         if (responseData.artists.total > 0) {
           const artist = responseData.artists.items[0];
           this.setState({ artist });
-          console.log(this.state.artist);
           fetch(`${API_ADDRESS}/artist/${artist.id}/top-tracks`)
             .then((response) => response.json())
             .then((responseData) => {
@@ -50,6 +49,7 @@ class App extends Component {
         <button onClick={this.searchArtist} >Search</button>
         <hr />
         <Artist artist={this.state.artist} />
+        <Tracks tracks={this.state.tracks} />
       </div>
     )
   }
